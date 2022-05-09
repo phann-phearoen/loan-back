@@ -8,8 +8,8 @@ class User < ApplicationRecord
     user = User.find_for_authentication(email: email)
     user&.valid_password?(password) ? user : nil
   end
-  def self.get_writer_by_id writer_id
-    self.where(id: writer_id).last
+  def self.get_user_by_id user_id
+    self.where(id: user_id).last
   end
   def as_json(options = {})
     super(options.merge({ except: [:created_at, :is_deleted, :uuid, :updated_at] }))
