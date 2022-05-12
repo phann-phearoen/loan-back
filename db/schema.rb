@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_12_142304) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_12_144923) do
   create_table "oauth_access_tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "resource_owner_id"
     t.bigint "application_id", null: false
@@ -53,6 +53,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_12_142304) do
     t.string "national_id", null: false
     t.float "total_deposit", limit: 53, default: 0.0, null: false
     t.string "loan", default: "0"
+    t.boolean "is_admin"
+    t.boolean "is_member"
+    t.boolean "is_client"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
