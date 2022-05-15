@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_15_083949) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_15_085138) do
   create_table "members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "gender", null: false
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_15_083949) do
     t.float "loan", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone", null: false
   end
 
   create_table "oauth_access_tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
