@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   before_action :doorkeeper_authorize!, only: [:index, :deposit]
-  before_action :get_user
+  before_action :get_user, only: [:deposit]
 
   def index
     users = User.all
@@ -15,6 +15,10 @@ class Api::V1::UsersController < ApplicationController
         render staus: 500
       end
     end
+  end
+  def get_all_users
+    users = User.where(is_member: true)
+    render json: users
   end
 
   private

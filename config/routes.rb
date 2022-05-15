@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       get 'users', to: 'users#index'
+      get 'users/get_all_users', to: 'users#get_all_users'
       put 'users/deposit', to: 'users#deposit'
     end
   end
