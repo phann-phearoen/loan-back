@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       put 'users/deposit', to: 'users#deposit'
 
       get 'members', to: 'members#index'
+      put 'members/deposit', to: 'members#deposit'
     end
   end
 end
