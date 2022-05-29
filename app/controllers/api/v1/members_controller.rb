@@ -12,7 +12,15 @@ class Api::V1::MembersController < ApplicationController
     else
       render staus: 500
     end
-  end 
+  end
+  def get_member_by_name
+    member = Member.where(name: params[:name])
+    if member
+      render json: member
+    else
+      render status: 404
+    end
+  end
   private
     def get_member
       @member = Member.find(params[:id])
