@@ -2,8 +2,14 @@ class Api::V1::MembersController < ApplicationController
   before_action :doorkeeper_authorize!, only: [:index, :deposit]
   before_action :get_member, only: [:view_member]
   def index
-    members = Member.all
-    render json: members
+    page = params[:page] || 1
+    per = params[:per] || 10
+    members = Member.page(1).per(per)
+    render json: {
+      members: members,
+      total_count: members.total_count,
+      total_pages: members.total_pages
+    }
   end
   def deposit
     transaction_params = {
