@@ -1,24 +1,34 @@
 class Api::V1::MembersController < ApplicationController
   before_action :doorkeeper_authorize!, only: [:index, :deposit]
-  before_action :get_member, only: [:deposit]
+  before_action :get_member, only: [:deposit, :view_member]
   def index
-    members = Member.all
+    admin_id = params[:admin_id]
+    members = Member.where.not(id: admin_id)
     render json: members
   end
   def deposit
-    @member.total_deposit += params[:new_deposit]
-    if @member.save
-      render json: 'ប្រត្តិបត្តិការណ៍ដាក់ប្រាក់សន្សំជោគជ័យ។'
+    transaction_params = {
+      amount: params[:amount].to_f,
+      type: 'deposit',
+      member_id: params[:member_id]
+    }
+    commit = Transaction.commit_transaction transaction_params
+    @member.total_deposit += params[:amount].to_f
+    if @member.save && commit
+      render json: {
+        transaction: commit,
+        message: 'ប្រត្តិបត្តិការណ៍ដាក់ប្រាក់សន្សំជោគជ័យ។'
+      }
     else
       render staus: 500
     end
   end
   def get_member_by_name
-    member = Member.where(name: params[:name])
+    member = Member.where(name: params[:admin_name]).last
     if member
       render json: member
     else
-      render status: 404
+      render 404
     end
   end
   private
