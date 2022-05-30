@@ -2,8 +2,7 @@ class Api::V1::MembersController < ApplicationController
   before_action :doorkeeper_authorize!, only: [:index, :deposit]
   before_action :get_member, only: [:view_member]
   def index
-    admin_id = params[:admin_id]
-    members = Member.where.not(id: admin_id)
+    members = Member.all
     render json: members
   end
   def deposit
