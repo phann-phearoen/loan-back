@@ -4,7 +4,7 @@ class Transaction < ApplicationRecord
   def self.commit_transaction transaction_params
     transaction = Transaction.new(
       amount: transaction_params[:amount],
-      type: transaction_params[:type],
+      transaction_type: transaction_params[:type],
       member_id: transaction_params[:id]
     )
     if transaction.save
