@@ -5,7 +5,7 @@ class Transaction < ApplicationRecord
     transaction = Transaction.new(
       amount: transaction_params[:amount],
       type: transaction_params[:type],
-      member_id: transaction_params[:member_id]
+      member_id: transaction_params[:id]
     )
     if transaction.save
       transaction

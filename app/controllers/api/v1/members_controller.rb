@@ -1,6 +1,6 @@
 class Api::V1::MembersController < ApplicationController
   before_action :doorkeeper_authorize!, only: [:index, :deposit]
-  before_action :get_member, only: [:deposit, :view_member]
+  before_action :get_member, only: [:view_member]
   def index
     admin_id = params[:admin_id]
     members = Member.where.not(id: admin_id)
@@ -10,11 +10,12 @@ class Api::V1::MembersController < ApplicationController
     transaction_params = {
       amount: params[:amount].to_f,
       type: 'deposit',
-      member_id: params[:member_id]
+      id: params[:id]
     }
+    member = Member.find(params[:id])
     commit = Transaction.commit_transaction transaction_params
-    @member.total_deposit += params[:amount].to_f
-    if @member.save && commit
+    member.total_deposit += params[:amount].to_f
+    if member.save && commit
       render json: {
         transaction: commit,
         message: 'ប្រត្តិបត្តិការណ៍ដាក់ប្រាក់សន្សំជោគជ័យ។'
