@@ -37,6 +37,10 @@ class Api::V1::MembersController < ApplicationController
       render 404
     end
   end
+  def get_one_member
+    member = Member.find(params[:id])
+    render json: member
+  end
   private
     def get_member
       @member = Member.find(params[:id])

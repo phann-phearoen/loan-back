@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
       get 'members', to: 'members#index'
       get 'members/get_member_by_name', to: 'members#get_member_by_name'
+      get 'members/get_one_member', to: 'members#get_one_member'
       put 'members/deposit', to: 'members#deposit'
     end
   end
