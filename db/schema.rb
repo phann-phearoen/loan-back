@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_19_022129) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_19_023256) do
   create_table "deposits", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "member_id"
     t.float "amount"
@@ -24,11 +24,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_19_022129) do
     t.string "gender", null: false
     t.date "date_of_birth", null: false
     t.string "national_id", null: false
-    t.float "total_deposit", limit: 53, default: 0.0
-    t.float "loan", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "phone", null: false
+    t.string "nationality"
+    t.string "ethnicity"
+    t.string "address"
   end
 
   create_table "oauth_access_tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
