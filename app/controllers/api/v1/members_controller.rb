@@ -31,7 +31,8 @@ class Api::V1::MembersController < ApplicationController
   def get_member_by_name
     member = Member.where(name: params[:admin_name]).last
     if member
-      render json: member
+      member_detail = Member.get_member_detail member
+      render json: member_detail
     else
       render 404
     end
