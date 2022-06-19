@@ -14,11 +14,10 @@ class Api::V1::MembersController < ApplicationController
   def deposit
     transaction_params = {
       amount: params[:amount].to_f,
-      type: 'deposit',
       id: params[:id]
     }
     member = Member.find(params[:id])
-    commit = Transaction.commit_transaction transaction_params
+    commit = Deposit.commit_deposit transaction_params
     member.total_deposit += params[:amount].to_f
     if member.save && commit
       render json: {

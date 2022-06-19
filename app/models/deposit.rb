@@ -1,10 +1,9 @@
 class Transaction < ApplicationRecord
   belongs_to :member
 
-  def self.commit_transaction transaction_params
+  def self.commit_deposit transaction_params
     transaction = Transaction.new(
       amount: transaction_params[:amount],
-      transaction_type: transaction_params[:type],
       member_id: transaction_params[:id]
     )
     if transaction.save
