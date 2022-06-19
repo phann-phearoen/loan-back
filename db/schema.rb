@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_19_033935) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_19_034734) do
   create_table "agreements", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "gender", null: false
@@ -33,6 +33,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_19_033935) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_deposits_on_member_id"
+  end
+
+  create_table "loans", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "member_id"
+    t.bigint "agreement_id"
+    t.float "amount", null: false
+    t.float "rate", null: false
+    t.integer "period", null: false
+    t.string "pawn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
