@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_19_034734) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_19_040755) do
   create_table "agreements", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "gender", null: false
@@ -25,6 +25,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_19_034734) do
     t.string "pawn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "gender", null: false
+    t.date "date_of_birth", null: false
+    t.string "national_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "phone", null: false
+    t.string "nationality"
+    t.string "ethnicity"
+    t.string "address"
+    t.boolean "is_member", null: false
   end
 
   create_table "deposits", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -44,19 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_19_034734) do
     t.string "pawn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "gender", null: false
-    t.date "date_of_birth", null: false
-    t.string "national_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "phone", null: false
-    t.string "nationality"
-    t.string "ethnicity"
-    t.string "address"
   end
 
   create_table "oauth_access_tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
