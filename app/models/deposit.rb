@@ -1,8 +1,8 @@
-class Transaction < ApplicationRecord
+class Deposit < ApplicationRecord
   belongs_to :member
 
   def self.commit_deposit transaction_params
-    transaction = Transaction.new(
+    transaction = Deposit.new(
       amount: transaction_params[:amount],
       member_id: transaction_params[:id]
     )
