@@ -38,7 +38,13 @@ class Api::V1::MembersController < ApplicationController
   end
   def get_one_member
     member = Member.find(params[:id])
-    render json: member
+
+    if member
+      member_detail = Member.get_member_detail member
+      render json: member_detail
+    else
+      render status 404
+    end
   end
   private
     def get_member
