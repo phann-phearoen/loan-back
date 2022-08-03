@@ -15,10 +15,41 @@ class Member < ApplicationRecord
     member
   end
 
-  def self.all_members
-    Member.where(is_client: false) 
+  def self.all_members page, per
+    members = Member.where(is_client: false).page(page).per(per)
+    resp_members = []
+    members.each do |m|
+      resp_members.push m.show_member m
+    end
+    rtv = {
+      members: resp_members,
+      total_count: members.total_count,
+      total_pages: members.total_pages
+    }
   end
   def self.all_clients 
     Member.where(is_client: true)
+  end
+
+  attribute :name
+  attribute :gender
+  attribute :date_of_birth
+  attribute :national_id
+  attribute :phone
+  attribute :address
+  attribute :is_client
+  attribute :deposit
+  attribute :loan
+  def show_member member
+    self.name = member.name
+    self.gender = member.gender
+    self.date_of_birth = member.date_of_birth
+    self.national_id = member.national_id
+    self.phone = member.phone
+    self.address = member.address
+    self.deposit = Deposit.show_member_deposit member || 0
+    self.loan = Loan.show_member_loan member || 0
+
+    self
   end
 end

@@ -12,4 +12,8 @@ class Deposit < ApplicationRecord
       "error"
     end
   end
+
+  def self.show_member_deposit member
+    Deposit.where(member_id: member.id).last
+  end
 end
