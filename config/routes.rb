@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       put 'users/deposit'
 
       post 'members/create_new_member'
+      get 'members/get_all_members'
     end
   end
 end

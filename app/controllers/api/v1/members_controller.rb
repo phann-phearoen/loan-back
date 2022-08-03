@@ -21,4 +21,15 @@ class Api::V1::MembersController < ApplicationController
       render status 500
     end
   end
+
+  def get_all_members
+    page = params[:page] || 1
+    per = params[:per] || 10
+    members = Member.all.page(page).per(per)
+    render json: {
+      members: members,
+      total_count: members.total_count,
+      total_pages: members.total_pages
+    }
+  end
 end
