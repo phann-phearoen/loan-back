@@ -14,6 +14,9 @@ class User < ApplicationRecord
   def as_json(options = {})
     super(options.merge({ except: [:created_at, :is_deleted, :uuid, :updated_at] }))
   end
+  def self.members
+    User.where(is_member: true)
+  end
   
   protected
   def confirmation_required?
