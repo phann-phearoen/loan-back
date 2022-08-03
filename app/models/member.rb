@@ -14,4 +14,11 @@ class Member < ApplicationRecord
     member.save!
     member
   end
+
+  def self.all_members
+    Member.where(is_client: false) 
+  end
+  def self.all_clients 
+    Member.where(is_client: true)
+  end
 end

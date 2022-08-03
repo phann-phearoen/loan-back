@@ -25,7 +25,7 @@ class Api::V1::MembersController < ApplicationController
   def get_all_members
     page = params[:page] || 1
     per = params[:per] || 10
-    members = Member.all.page(page).per(per)
+    members = Member.all_members.page(page).per(per)
     render json: {
       members: members,
       total_count: members.total_count,
