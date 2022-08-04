@@ -30,6 +30,11 @@ class Member < ApplicationRecord
   def self.all_clients 
     Member.where(is_client: true)
   end
+  def self.get_one_member id
+    member = Member.find(id)
+    member.show_member member
+    member
+  end
 
   attribute :name
   attribute :gender

@@ -28,4 +28,14 @@ class Api::V1::MembersController < ApplicationController
     members = Member.all_members page, per
     render json: members
   end
+
+  def get_one_member
+    id = params[:id]
+    if id
+      member = Member.get_one_member id
+      render json: member
+    else
+      render status 500
+    end
+  end
 end
