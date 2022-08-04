@@ -36,6 +36,11 @@ class Member < ApplicationRecord
     member.show_member member
     member
   end
+  def self.get_member_by_name name
+    member = Member.where(name: name).last
+    member.show_member member
+    member
+  end
 
   attribute :name
   attribute :gender
