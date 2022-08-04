@@ -37,4 +37,14 @@ class Api::V1::MembersController < ApplicationController
       render status 500
     end
   end
+
+  def get_member_by_name
+    name = params[:admin_name]
+    if name
+      rtv = Member.get_member_by_name name
+      render json: rtv
+    else
+      render status 500
+    end
+  end
 end
