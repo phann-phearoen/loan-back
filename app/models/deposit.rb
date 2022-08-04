@@ -1,15 +1,12 @@
 class Deposit < ApplicationRecord
   belongs_to :member
 
-  def self.commit_deposit transaction_params
-    transaction = Deposit.new(
-      amount: transaction_params[:amount],
-      member_id: transaction_params[:id]
-    )
+  def self.new_deposit member_id, amount
+    transaction = Deposit.new
+    transaction.member_id = member_id
+    transaction.amount = amount
     if transaction.save
       transaction
-    else
-      "error"
     end
   end
 

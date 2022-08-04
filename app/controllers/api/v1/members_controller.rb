@@ -1,6 +1,5 @@
 class Api::V1::MembersController < ApplicationController
-  before_action :doorkeeper_authorize!, only: [:index, :deposit]
-  before_action :get_user, only: [:deposit]
+  before_action :doorkeeper_authorize!, only: [:create_new_member]
   
   def create_new_member
     member_params = {

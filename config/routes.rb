@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       post 'members/create_new_member'
       get 'members/get_all_members'
       get 'members/get_one_member'
+
+      post 'deposits/new_deposit'
     end
   end
 end

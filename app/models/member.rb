@@ -11,8 +11,9 @@ class Member < ApplicationRecord
     member.address = member_params[:address]
     member.is_client = member_params[:is_client]
 
-    member.save!
-    member
+    if member.save
+      member
+    end
   end
 
   def self.all_members page, per
