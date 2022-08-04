@@ -19,6 +19,8 @@ gem 'rack-cors'
 
 gem 'kaminari'
 
+gem 'yaml_db'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
