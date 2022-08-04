@@ -8,11 +8,11 @@ Rails.application.routes.draw do
       get 'users'
       get 'users/get_all_users'
       get 'users/get_all_members'
-      put 'users/deposit'
 
       post 'members/create_new_member'
       get 'members/get_all_members'
       get 'members/get_one_member'
+      get 'members/get_member_by_name'
 
       post 'deposits/new_deposit'
     end
