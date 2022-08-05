@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_03_033628) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_05_080028) do
   create_table "agreements", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,6 +77,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_03_033628) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
+  end
+
+  create_table "pawns", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "number"
+    t.date "registered_date"
+    t.string "registered_by"
+    t.float "surface_area"
+    t.float "estimated_value"
+    t.string "north"
+    t.string "east"
+    t.string "south"
+    t.string "west"
+    t.string "other_assets"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
