@@ -1,0 +1,3 @@
+class Pawn < ApplicationRecord
+  
+end
