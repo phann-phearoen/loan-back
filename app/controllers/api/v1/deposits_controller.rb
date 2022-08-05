@@ -11,4 +11,9 @@ class Api::V1::DepositsController < ApplicationController
       render status 500
     end
   end
+
+  def get_total_deposits
+    total_deposits = Deposit.total_deposits
+    render json: total_deposits
+  end
 end

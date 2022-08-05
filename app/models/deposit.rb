@@ -12,4 +12,7 @@ class Deposit < ApplicationRecord
   def self.show_member_deposit member
     Deposit.where(member_id: member.id).sum(:amount)
   end
+  def self.total_deposits 
+    Deposit.all.sum(:amount)
+  end
 end

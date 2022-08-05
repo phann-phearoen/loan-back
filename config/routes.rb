@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'members/get_total_clients_count'
 
       post 'deposits/new_deposit'
+      get 'deposits/get_total_deposits'
     end
   end
 end
