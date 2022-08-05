@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_05_080028) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_05_081406) do
   create_table "agreements", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,11 +30,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_05_080028) do
     t.float "amount", null: false
     t.float "rate", null: false
     t.integer "period", null: false
-    t.string "pawn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "agreeement_id"
-    t.index ["agreeement_id"], name: "index_loans_on_agreeement_id"
+    t.bigint "pawns_id"
+    t.index ["pawns_id"], name: "index_loans_on_pawns_id"
   end
 
   create_table "members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
