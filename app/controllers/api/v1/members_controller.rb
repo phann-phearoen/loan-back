@@ -47,4 +47,9 @@ class Api::V1::MembersController < ApplicationController
       render status 500
     end
   end
+
+  def get_total_members_count
+    total_members = Member.where(is_client: false).count 
+    render json: total_members
+  end
 end
