@@ -3,4 +3,7 @@ class Loan < ApplicationRecord
   def self.show_member_loan member
     Loan.where(member_id: member.id).sum(:amount)
   end
+  def self.total_loans
+    Loan.all.sum(:amount)
+  end
 end

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
       post 'deposits/new_deposit'
       get 'deposits/get_total_deposits'
+
+      get 'loans/get_total_loans'
     end
   end
 end
