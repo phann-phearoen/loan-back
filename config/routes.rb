@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       get 'deposits/get_total_deposits'
 
       get 'loans/get_total_loans'
+
+      post 'pawns/new_pawn'
     end
   end
 end
