@@ -12,9 +12,9 @@ class Loan < ApplicationRecord
     loan.member_id = loan_hash[:member_id]
     loan.amount = loan_hash[:amount]
     loan.rate = loan_hash[:rate]
-    laon.period = loan_hash[:period]
+    loan.period = loan_hash[:period]
     loan.pawns_id = loan_hash[:pawn_id]
-    laon.save
+    loan.save
     loan
   end
 end
