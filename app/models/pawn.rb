@@ -11,7 +11,8 @@ class Pawn < ApplicationRecord
     pawn.south = pawn_hash[:south]
     pawn.west = pawn_hash[:west]
     other_assets = pawn_hash[:other_assets]
-    pawn.save
-    pawn
+    if pawn.save
+      pawn
+    end
   end
 end

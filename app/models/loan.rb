@@ -14,7 +14,8 @@ class Loan < ApplicationRecord
     loan.rate = loan_hash[:rate]
     loan.period = loan_hash[:period]
     loan.pawns_id = loan_hash[:pawn_id]
-    loan.save
-    loan
+    if loan.save
+      loan
+    end
   end
 end
