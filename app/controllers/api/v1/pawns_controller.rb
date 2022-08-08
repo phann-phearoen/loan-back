@@ -1,4 +1,4 @@
-class Api::V1::LoansController < ApplicationController
+class Api::V1::PawnsController < ApplicationController
   before_action :doorkeeper_authorize!, only: [:new_pawn]
 
   def new_pawn
