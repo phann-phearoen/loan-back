@@ -37,6 +37,18 @@ class Member < ApplicationRecord
       total_pages: members.total_pages
     }
   end
+  def self.all_clients page, per
+    clients = Member.where(is_client: true).page(page).per(per)
+    resp_clients = []
+    clients.each do |m|
+      resp_clients.push m.show_member m
+    end
+    rtv = {
+      clients: resp_clients,
+      total_count: clients.total_count,
+      total_pages: clients.total_pages
+    }
+  end
   def self.all_clients 
     Member.where(is_client: true)
   end

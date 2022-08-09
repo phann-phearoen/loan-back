@@ -62,4 +62,11 @@ class Api::V1::MembersController < ApplicationController
     total_clients = Member.where(is_client: true).count
     render json: total_clients
   end
+
+  def get_all_clients
+    page = params[:page] || 1
+    per = params[:per] || 10
+    all_clients = Member.all_clients page, per
+    render json: all_clients
+  end
 end

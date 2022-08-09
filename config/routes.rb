@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'members/get_member_by_name'
       get 'members/get_total_members_count'
       get 'members/get_total_clients_count'
+      get 'members/get_all_clients'
 
       post 'deposits/new_deposit'
       get 'deposits/get_total_deposits'
