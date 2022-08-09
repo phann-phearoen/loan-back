@@ -1,5 +1,5 @@
 class Pawn < ApplicationRecord
-  belongs_to :loan
+  belongs_to :loan, class_name: "Loan", optional: true
   def self.create_new_pawn(
     number,
     registered_date,
@@ -22,5 +22,6 @@ class Pawn < ApplicationRecord
     pawn.west = west
     other_assets = other_assets
     pawn.save
+    pawn
   end
 end
