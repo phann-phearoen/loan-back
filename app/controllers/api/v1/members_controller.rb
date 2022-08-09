@@ -23,11 +23,7 @@ class Api::V1::MembersController < ApplicationController
       address,
       is_client
     )
-    if member
-      render josn: member
-    else
-      render status 500
-    end
+    render json: member
   end
 
   def get_all_members

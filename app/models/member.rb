@@ -22,6 +22,7 @@ class Member < ApplicationRecord
     member.is_client = is_client
 
     member.save
+    member
   end
 
   def self.all_members page, per
