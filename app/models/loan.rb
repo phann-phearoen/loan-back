@@ -21,5 +21,6 @@ class Loan < ApplicationRecord
     loan.period = period
     loan.pawns_id = pawn_id
     loan.save
+    loan
   end
 end
