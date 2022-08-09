@@ -6,9 +6,20 @@ class Api::V1::LoansController < ApplicationController
     render json: total_loans
   end
   def new_loan
-    loan_hash = params
-    loan = Loan.create_new_loan loan_hash
-    if loan
+    member_id = params[:member_id]
+    amount    = params[:amount]
+    rate      = params[:rate]
+    period    = params[:period]
+    pawn_id   = params[:pawn_id]
+
+    if member_id
+      loan = Loan.create_new_loan(
+        member_id,
+        amount,
+        rate,
+        period,
+        pawn_id
+      )
       render json: loan
     else
       render status 500

@@ -7,15 +7,19 @@ class Loan < ApplicationRecord
   def self.total_loans
     Loan.all.sum(:amount)
   end
-  def self.create_new_loan loan_hash
+  def self.create_new_loan(
+    member_id,
+    amount,
+    rate,
+    period,
+    pawn_id
+  )
     loan = Loan.new
-    loan.member_id = loan_hash[:member_id]
-    loan.amount = loan_hash[:amount]
-    loan.rate = loan_hash[:rate]
-    loan.period = loan_hash[:period]
-    loan.pawns_id = loan_hash[:pawn_id]
-    if loan.save
-      loan
-    end
+    loan.member_id = member_id
+    loan.amount = amount
+    loan.rate = rate
+    loan.period = period
+    loan.pawns_id = pawn_id
+    loan.save
   end
 end
