@@ -66,7 +66,7 @@ class Api::V1::MembersController < ApplicationController
   def get_all_clients
     page = params[:page] || 1
     per = params[:per] || 10
-    all_clients = Member.all_clients page, per
+    all_clients = Member.get_all_clients page, per
     render json: all_clients
   end
 end
