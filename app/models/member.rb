@@ -1,19 +1,27 @@
 class Member < ApplicationRecord
-  def self.create_new_member member_params
-    member = Member.new()
-    member.name = member_params[:name]
-    member.gender = member_params[:gender]
-    member.date_of_birth = member_params[:date_of_birth]
-    member.national_id = member_params[:national_id]
-    member.phone = member_params[:phone]
-    member.nationality = member_params[:nationality]
-    member.ethnicity = member_params[:ethnicity]
-    member.address = member_params[:address]
-    member.is_client = member_params[:is_client]
+  def self.create_new_member(
+    name,
+    gender,
+    date_of_birth,
+    national_id,
+    phone,
+    nationality,
+    ethnicity,
+    address,
+    is_client
+  )
+    member = Member.new
+    member.name = name
+    member.gender = gender
+    member.date_of_birth = date_of_birth
+    member.national_id = national_id
+    member.phone = phone
+    member.nationality = nationality
+    member.ethnicity = ethnicity
+    member.address = address
+    member.is_client = is_client
 
-    if member.save
-      member
-    end
+    member.save
   end
 
   def self.all_members page, per

@@ -2,18 +2,27 @@ class Api::V1::MembersController < ApplicationController
   before_action :doorkeeper_authorize!, only: [:create_new_member]
   
   def create_new_member
-    member_params = {
-      name: params[:name],
-      gender: params[:gender],
-      date_of_birth: params[:date_of_birth],
-      national_id: params[:national_id],
-      phone: params[:phone],
-      nationality: params[:nationality] || 'Cambodian',
-      ethnicity: params[:ethnicity] || 'Cambodian',
-      address: params[:address],
-      is_client: params[:is_client] || false
-    }
-    member = Member.create_new_member member_params
+    name          = params[:name]
+    gender        = params[:gender]
+    date_of_birth = params[:date_of_birth]
+    national_id   = params[:national_id]
+    phone         = params[:phone]
+    nationality   = params[:nationality] || 'Cambodian'
+    ethnicity     = params[:ethnicity] || 'Cambodian'
+    address       = params[:address]
+    is_client     = params[:is_client] || false
+
+    member = Member.create_new_member(
+      name,
+      gender,
+      date_of_birth,
+      national_id,
+      phone,
+      nationality,
+      ethnicity,
+      address,
+      is_client
+    )
     if member
       render josn: member
     else
